@@ -84,6 +84,25 @@
      * - Static class: A static class can only contain static members.
      *                 A static class cannot be instantiated.
      * - No we cannot create an object from a static class.
+     * 
+     * -----------Q4:-----------
+     * EXTENTION METHODS
+     * 
+     * 
+     * a) What is an Extension Method? 
+     * Extention methid: Is a method that you can use without editing in it 
+     *                   and anailable as a built in method.
+     *                   
+     * b) What keyword must be used in the first parameter of an extension method? 
+     * keyword: this we put it as a parameter
+     * 
+     * c) Where must an extension method be declared? 
+     * An extention methid must be declared in a static class and also must be public.
+     * 
+     * d) Can an extension method access private members of the class it extends?
+     * Yes, extention methods can access private members of a class it extends.
+     * But out of this class we can never access those private fields.
+     * 
      */
     #endregion
     internal class Program
