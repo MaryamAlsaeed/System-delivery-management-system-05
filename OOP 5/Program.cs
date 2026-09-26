@@ -103,6 +103,28 @@
      * Yes, extention methods can access private members of a class it extends.
      * But out of this class we can never access those private fields.
      * 
+     * 
+     * -----------Q5:-----------
+     * PARTIAL CLASSES AND PARTIAL METHODS
+     * 
+     * 
+     * a) What is a Partial Class? 
+     * A partial class is a class that is a splited into to classes with the keyword partial.
+     * When we run they are combined together in one class.
+     * 
+     * b) Why would a developer split one class into multiple files?
+     * Because we might have two developers working on the same name class and each is responsible for a different thing.
+     * so it will be more organized and easy to modify.
+     * 
+     * c) What is a Partial Method? 
+     * A partial method is a method that doesnt have implementation.
+     * It is created by the keyword: partial
+     * If we didnt call it the compiler will remove the call.
+     * 
+     * d) What happens if a declared partial method has no implementation?
+     * The compiler will remove the partial method call.
+     * It will not affect by any errors.
+     * 
      */
     #endregion
     internal class Program
