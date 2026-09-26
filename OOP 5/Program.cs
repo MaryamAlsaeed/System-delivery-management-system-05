@@ -1,7 +1,6 @@
 ﻿namespace OOP_5
 {
     #region Theoretical Questions
-    #region Theoretical Questions
     /*
      * -----------Q1:-----------
      * OBJECT COPYING
@@ -61,8 +60,31 @@
      *   so, with deep copy it will not affect the old address and we will just affect the new copy independently.
      *
      *
+     * -----------Q3:-----------
+     * STATIC MEMBERS
+     * 
+     * 
+     * a) What is a static field, and how is it different from an instance field? 
+     * - Static field: A static field is a feild that is available in a static class.
+     *                 It is shared by all objects of that class.
+     *                 
+     * - Instance field: An instance field belongs to a specific object.
+     *                   Each object has it's own instance fiels.
+     * 
+     * b) What is a static method? Can a static method directly access instance members? 
+     * - Static method: it belongs to a static class and we cannot call it by any object.
+     * - No, you cannot access directly access it we need to create an object to be able to access it.
+     * - Because static methids can be accessed only by static members.
+     * 
+     * c) What is a static constructor, and when is it executed? 
+     * - Static contructor: A static contructor runs first before any object is created.
+     * - It is executed automatically when we run so we dont need to run it manually.
+     * 
+     * d) What is a static class? Can you create an object from a static class? 
+     * - Static class: A static class can only contain static members.
+     *                 A static class cannot be instantiated.
+     * - No we cannot create an object from a static class.
      */
-    #endregion
     #endregion
     internal class Program
     {
