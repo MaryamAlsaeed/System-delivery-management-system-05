@@ -4,13 +4,13 @@ using System.Text;
 
 namespace OOP_5
 {
-    public abstract class Shipment : ITrackable, IInsurable
+    public abstract class Shipment 
     {
         internal string _trackingCode;
         internal string _description;
         internal double _weight;
         internal double _deliveryFee;
-        public DeliveryAddress Destination { get; set; }
+        public DeliveryAddress destination { get; set; }
         public string TrackingCode
         {
             get { return _trackingCode; }
@@ -58,15 +58,15 @@ namespace OOP_5
             Description = "Unknown";
             Weight = 1;
             DeliveryFee = 50;
-            Destination = new DeliveryAddress("Unknown", "Unknown", 0);
+            destination = new DeliveryAddress("Unknown", "Unknown", 0);
         }
-        public Shipment(string trackingCode, string description, double weight, double deliveryFee, DeliveryAddress destination)
+        public Shipment(string trackingCode, string description, double weight, double deliveryFee, DeliveryAddress Destination)
         {
-            this.TrackingCode = trackingCode;
+            TrackingCode = trackingCode;
             Description = description;
             Weight = weight;
             DeliveryFee = deliveryFee;
-            Destination = destination;
+            destination = Destination;
         }
         public void UpdateDeliveryFee(double newFee)
         {
@@ -89,22 +89,21 @@ namespace OOP_5
         {
             return this;
         }
-        public Shipment ShallpwCopy()
+        public Shipment ShallowCopy()
         {
-            return this.(Shipment)MemberwiseClone();
+            return (Shipment)MemberwiseClone();
         }
         public Shipment DeepCopy()
         {
             DeliveryAddress newAddress = new DeliveryAddress(
-                this.Destination.City,
-                this.Destination.Street,
-                this.Destination.BuildingNumber
+                this.destination.City,
+                this.destination.Street,
+                this.destination.BuildingNumber
             );
             Shipment deepCopy = (Shipment)this.MemberwiseClone();
-            deepCopy.Destination = newAddress;
+            deepCopy.destination = newAddress;
 
             return deepCopy;
-        
         }
     }
 }
