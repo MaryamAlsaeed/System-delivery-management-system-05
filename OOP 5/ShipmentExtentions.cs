@@ -18,11 +18,9 @@ namespace OOP_5
 
         public static bool IsDelivered(this Shipment shipment)
         {
-            // Validate that shipment is not null
             if (shipment == null)
                 return false;
 
-            // Return true only if tracking status is "Delivered"
             return shipment.TrackingStatus == "Delivered";
         }
     }

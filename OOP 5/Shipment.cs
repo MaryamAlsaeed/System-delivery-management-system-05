@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOP_5
 {
-    public abstract class Shipment
+    public abstract partial class Shipment
     {
         private static int _totalShipmentsCreated = 0;
         internal string _trackingCode;
@@ -58,17 +58,7 @@ namespace OOP_5
             }
         }
 
-        private string _trackingStatus = "In Transit";
-
-        public string TrackingStatus
-        {
-            get { return _trackingStatus; }
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value))
-                    _trackingStatus = value;
-            }
-        }
+        
 
         public abstract double EstimatedCost { get; }
         public Shipment(string trackingCode)
