@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OOP_5
 {
-    public abstract partial class Shipment
+    public abstract partial class Shipmentt
     {
         private string _trackingStatus = "In Transit";
         public string TrackingStatus
