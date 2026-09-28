@@ -4,13 +4,20 @@ using System.Text;
 
 namespace OOP_5
 {
-    public abstract class Shipment 
+    public abstract class Shipment
     {
+        private static int _totalShipmentsCreated = 0;
         internal string _trackingCode;
         internal string _description;
         internal double _weight;
         internal double _deliveryFee;
         public DeliveryAddress destination { get; set; }
+
+        static Shipment()
+        {
+            _totalShipmentsCreated = 0;
+            Console.WriteLine("Shipment System Initialized");
+        }
         public string TrackingCode
         {
             get { return _trackingCode; }
@@ -51,6 +58,18 @@ namespace OOP_5
             }
         }
 
+        private string _trackingStatus = "In Transit";
+
+        public string TrackingStatus
+        {
+            get { return _trackingStatus; }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    _trackingStatus = value;
+            }
+        }
+
         public abstract double EstimatedCost { get; }
         public Shipment(string trackingCode)
         {
@@ -59,6 +78,7 @@ namespace OOP_5
             Weight = 1;
             DeliveryFee = 50;
             destination = new DeliveryAddress("Unknown", "Unknown", 0);
+            _totalShipmentsCreated++;
         }
         public Shipment(string trackingCode, string description, double weight, double deliveryFee, DeliveryAddress Destination)
         {
@@ -67,6 +87,7 @@ namespace OOP_5
             Weight = weight;
             DeliveryFee = deliveryFee;
             destination = Destination;
+            _totalShipmentsCreated++;
         }
         public void UpdateDeliveryFee(double newFee)
         {
@@ -83,7 +104,13 @@ namespace OOP_5
             if (newWeight > 0 && packingWeight > 0)
                 Weight = newWeight + packingWeight;
         }
+        public static int GetTotalShipmentsCreated()
+        {
+            return _totalShipmentsCreated;
+        }
         public abstract void PrintShipment();
+
+
 
         public Shipment CopyShipment()
         {

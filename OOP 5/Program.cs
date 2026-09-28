@@ -131,7 +131,32 @@
     {
         static void Main(string[] args)
         {
-            
+            #region Section 6: Static Method
+            Console.WriteLine("\n==========================================");
+            Console.WriteLine("Static Method - GetTotalShipmentsCreated()");
+            Console.WriteLine("==========================================\n");
+
+            DeliveryAddress addr1 = new DeliveryAddress("Cairo", "Nasr City", 42);
+            StandardShipment standard = new StandardShipment("ord1", "Laptop", 3, 80, addr1);
+
+            DeliveryAddress addr2 = new DeliveryAddress("Alexandria", "Smouha", 15);
+            ExpressShipment express = new ExpressShipment("ord2", "Mobile Phone", 2, 60, addr2, 30);
+
+            DeliveryAddress addr3 = new DeliveryAddress("Cairo", "Heliopolis", 88);
+            InternationalShipment international = new InternationalShipment("ord3", "Television", 8, 120, addr3, "Germany", 100);
+
+            Console.WriteLine($"Standard Shipment Created");
+            Console.WriteLine($"Express Shipment Created");
+            Console.WriteLine($"International Shipment Created");
+            Console.WriteLine();
+
+            int total = Shipment.GetTotalShipmentsCreated();
+            Console.WriteLine($"Total Shipments Created : {total}");
+            Console.WriteLine();
+            #endregion
+
+            //Static class
+            DeliveryUtilities.PrintSystemTitle("Delivery Center");
         }
     }
 }
