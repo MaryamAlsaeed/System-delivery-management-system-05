@@ -100,8 +100,6 @@ namespace OOP_5
         }
         public abstract void PrintShipment();
 
-
-
         public Shipment CopyShipment()
         {
             return this;
