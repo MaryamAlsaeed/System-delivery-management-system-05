@@ -26,7 +26,7 @@ namespace OOP_5
                     _customsFee = value;
             }
         }
-        public InternashionalShipment(string trackingCode, string description, double weight, double deliveryFee, DeliveryAddress destination, string destinationCountry, double customsFee)
+        public InternationalShipment(string trackingCode, string description, double weight, double deliveryFee, DeliveryAddress destination, string destinationCountry, double customsFee)
             : base(trackingCode, description, weight, deliveryFee, destination)
         {
             DestinationCountry = destinationCountry;

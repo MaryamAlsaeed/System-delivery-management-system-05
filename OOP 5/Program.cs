@@ -131,34 +131,157 @@
     {
         static void Main(string[] args)
         {
-            
-
-            #region Section 6: Static Method
-            Console.WriteLine("\n==========================================");
-            Console.WriteLine("Static Method - GetTotalShipmentsCreated()");
-            Console.WriteLine("==========================================\n");
-
-            DeliveryAddress addr1 = new DeliveryAddress("Cairo", "Nasr City", 42);
-            StandardShipment standard = new StandardShipment("ord1", "Laptop", 3, 80, addr1);
-
-            DeliveryAddress addr2 = new DeliveryAddress("Alexandria", "Smouha", 15);
-            ExpressShipment express = new ExpressShipment("ord2", "Mobile Phone", 2, 60, addr2, 30);
-
-            DeliveryAddress addr3 = new DeliveryAddress("Cairo", "Heliopolis", 88);
-            InternationalShipment international = new InternationalShipment("ord3", "Television", 8, 120, addr3, "Germany", 100);
-
-            Console.WriteLine($"Standard Shipment Created");
-            Console.WriteLine($"Express Shipment Created");
-            Console.WriteLine($"International Shipment Created");
+            Console.WriteLine("======================================");
+            Console.WriteLine("Smart Delivery Management System");
+            Console.WriteLine("======================================");
             Console.WriteLine();
 
-            int total = Shipment.GetTotalShipmentsCreated();
-            Console.WriteLine($"Total Shipments Created : {total}");
-            Console.WriteLine();
-            #endregion
 
-            //Static class
-            DeliveryUtilities.PrintSystemTitle("Delivery Center");
+            DeliveryAddress addr1 = new DeliveryAddress("Cairo", "Nasr City", 123);
+            DeliveryAddress addr2 = new DeliveryAddress("Alexandria", "Downtown", 456);
+            DeliveryAddress addr3 = new DeliveryAddress("Giza", "Haram", 789);
+
+            Console.WriteLine("======================================");
+            Console.WriteLine("Creating Shipments...");
+            Console.WriteLine("======================================");
+            Console.WriteLine();
+
+            StandardShipment standard = new StandardShipment("SH001", "Laptop", 3, 80, addr1);
+            Console.WriteLine("Standard Shipment Created");
+
+            ExpressShipment express = new ExpressShipment("SH002", "Phone", 2, 100, addr2, 10);
+            Console.WriteLine("Express Shipment Created");
+
+            InternationalShipment international = new InternationalShipment("SH003", "Documents", 8, 120, addr3, "USA", 75);
+            Console.WriteLine("International Shipment Created");
+
+            Console.WriteLine();
+            Console.WriteLine($"Total Shipments Created : {Shipment.GetTotalShipmentsCreated()}");
+            Console.WriteLine();
+
+
+            StandardShipment assigned = standard;
+
+            Console.WriteLine($"Original Shipment  : {standard.TrackingCode}");
+            Console.WriteLine($"Assigned Shipment  : {assigned.TrackingCode}");
+            Console.WriteLine();
+            Console.WriteLine($"Same Object : {ReferenceEquals(standard, assigned)}");
+            Console.WriteLine();
+
+
+
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("Shallow Copy");
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine();
+
+            DeliveryAddress shallowAddr = new DeliveryAddress("Cairo", "Zamalek", 500);
+            StandardShipment originalShallow = new StandardShipment("SH004", "Monitor", 4, 110, shallowAddr);
+            StandardShipment shallowCopy = originalShallow.ShallowCopy();
+
+            Console.WriteLine($"Original Shipment Address : {originalShallow.destination.City}");
+            Console.WriteLine($"Copied Shipment Address   : {shallowCopy.destination.City}");
+            Console.WriteLine();
+            Console.WriteLine("Changing copied shipment address...");
+            Console.WriteLine();
+
+
+            shallowCopy.destination.City = "Giza";
+
+            Console.WriteLine($"Original Shipment Address : {originalShallow.destination.City}");
+            Console.WriteLine($"Copied Shipment Address   : {shallowCopy.destination.City}");
+            Console.WriteLine();
+            Console.WriteLine($"Same DeliveryAddress Object : {ReferenceEquals(originalShallow.destination, shallowCopy.destination)}");
+            Console.WriteLine();
+
+
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("Deep Copy");
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine();
+
+            DeliveryAddress deepAddr = new DeliveryAddress("Cairo", "Heliopolis", 300);
+            StandardShipment originalDeep = new StandardShipment("SH005", "Keyboard", 1.5, 75, deepAddr);
+            StandardShipment deepCopy = originalDeep.DeepCopy();
+
+            Console.WriteLine($"Original Shipment Address : {originalDeep.destination.City}");
+            Console.WriteLine($"Copied Shipment Address   : {deepCopy.destination.City}");
+            Console.WriteLine();
+            Console.WriteLine("Changing copied shipment address...");
+            Console.WriteLine();
+
+           
+            deepCopy.destination.City = "Giza";
+
+            Console.WriteLine($"Original Shipment Address : {originalDeep.destination.City}");
+            Console.WriteLine($"Copied Shipment Address   : {deepCopy.destination.City}");
+            Console.WriteLine();
+            Console.WriteLine($"Same DeliveryAddress Object : {ReferenceEquals(originalDeep.destination, deepCopy.destination)}");
+            Console.WriteLine();
+
+
+
+            Console.WriteLine("======================================");
+            Console.WriteLine("Extension Methods");
+            Console.WriteLine("======================================");
+            Console.WriteLine();
+
+     
+            express.TrackingStatus = "Out For Delivery";
+            international.TrackingStatus = "Delivered";
+
+            Console.WriteLine(standard.GetSummary());
+            Console.WriteLine(express.GetSummary());
+            Console.WriteLine(international.GetSummary());
+            Console.WriteLine();
+
+            Console.WriteLine($"SH001 Is Delivered : {standard.IsDelivered()}");
+            Console.WriteLine($"SH003 Is Delivered : {international.IsDelivered()}");
+            Console.WriteLine();
+
+
+            Console.WriteLine("======================================");
+            Console.WriteLine("Tracking Status");
+            Console.WriteLine("======================================");
+            Console.WriteLine();
+
+            express.UpdateTrackingStatus("Out For Delivery");
+            Console.WriteLine();
+
+
+            Console.WriteLine("======================================");
+            Console.WriteLine("Static Utilities");
+            Console.WriteLine("======================================");
+            Console.WriteLine();
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine("Delivery Center");
+            Console.WriteLine("--------------------------------------");
+            Console.WriteLine();
+            DeliveryCenter dc = new DeliveryCenter();
+            dc.AddShipment(standard);
+            dc.AddShipment(express);
+            dc.AddShipment(international);
+
+            Console.WriteLine($"Total Shipments Created : {Shipment.GetTotalShipmentsCreated()}");
+            Console.WriteLine();
+
+
+
+            Console.WriteLine("======================================");
+            Console.WriteLine("Partial Method");
+            Console.WriteLine("======================================");
+            Console.WriteLine();
+
+            international.UpdateTrackingStatus("Delivered");
+            Console.WriteLine();
+
+
+
+            Console.WriteLine("======================================");
+            Console.WriteLine("Assignment Completed");
+            Console.WriteLine("======================================");
+            Console.WriteLine();
+
         }
     }
 }

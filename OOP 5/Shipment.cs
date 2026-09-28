@@ -11,6 +11,7 @@ namespace OOP_5
         internal string _description;
         internal double _weight;
         internal double _deliveryFee;
+        public string TrackingStatus { get; set; }
         public DeliveryAddress destination { get; set; }
 
         static Shipment()
