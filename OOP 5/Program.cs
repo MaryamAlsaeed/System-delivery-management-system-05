@@ -131,6 +131,8 @@
     {
         static void Main(string[] args)
         {
+            
+
             #region Section 6: Static Method
             Console.WriteLine("\n==========================================");
             Console.WriteLine("Static Method - GetTotalShipmentsCreated()");
