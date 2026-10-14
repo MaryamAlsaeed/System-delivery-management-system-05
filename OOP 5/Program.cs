@@ -177,7 +177,7 @@
 
             DeliveryAddress shallowAddr = new DeliveryAddress("Cairo", "Zamalek", 500);
             StandardShipment originalShallow = new StandardShipment("SH004", "Monitor", 4, 110, shallowAddr);
-            StandardShipment shallowCopy = originalShallow.ShallowCopy();
+            StandardShipment shallowCopy = (StandardShipment)originalShallow.ShallowCopy();
 
             Console.WriteLine($"Original Shipment Address : {originalShallow.destination.City}");
             Console.WriteLine($"Copied Shipment Address   : {shallowCopy.destination.City}");
@@ -186,7 +186,10 @@
             Console.WriteLine();
 
 
-            shallowCopy.destination.City = "Giza";
+
+            DeliveryAddress shallowAddress = shallowCopy.destination;
+            shallowAddress.City = "Giza";
+            shallowCopy.destination = shallowAddress;
 
             Console.WriteLine($"Original Shipment Address : {originalShallow.destination.City}");
             Console.WriteLine($"Copied Shipment Address   : {shallowCopy.destination.City}");
@@ -202,7 +205,7 @@
 
             DeliveryAddress deepAddr = new DeliveryAddress("Cairo", "Heliopolis", 300);
             StandardShipment originalDeep = new StandardShipment("SH005", "Keyboard", 1.5, 75, deepAddr);
-            StandardShipment deepCopy = originalDeep.DeepCopy();
+            StandardShipment deepCopy = (StandardShipment)originalDeep.DeepCopy();
 
             Console.WriteLine($"Original Shipment Address : {originalDeep.destination.City}");
             Console.WriteLine($"Copied Shipment Address   : {deepCopy.destination.City}");
@@ -210,8 +213,10 @@
             Console.WriteLine("Changing copied shipment address...");
             Console.WriteLine();
 
-           
-            deepCopy.destination.City = "Giza";
+
+            DeliveryAddress deepAddress = deepCopy.destination;
+            deepAddress.City = "Giza";
+            deepCopy.destination = deepAddress;
 
             Console.WriteLine($"Original Shipment Address : {originalDeep.destination.City}");
             Console.WriteLine($"Copied Shipment Address   : {deepCopy.destination.City}");
